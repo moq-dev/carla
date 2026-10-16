@@ -1,0 +1,19 @@
+# The offline checks: no CARLA, GPU, or Epic access. The image build itself
+# needs all three, so it runs by hand (see README.md).
+name: Check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: shellcheck *.sh
+      - run: ./sources.test.sh
