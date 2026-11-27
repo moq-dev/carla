@@ -41,7 +41,7 @@ needs about 40 GB and takes roughly 20 minutes cold on a 32-core machine, most
 of it the Shipping build. Private engine sources and generated binaries are not
 distributed here.
 
-`./sources.test.sh` runs without CARLA, a GPU, or the network.
+`./sources.test.sh` runs without CARLA, a GPU, or the network. Pull requests run no CI, so run it and `shellcheck ./*.sh` before pushing.
 
 ## The shared header
 
