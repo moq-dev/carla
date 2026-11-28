@@ -7,6 +7,7 @@ default:
 	just --list
 
 # Run what CI runs, the offline checks: no CARLA, GPU, or Epic access.
+# ShellCheck comes from PATH when present, as on CI, and otherwise from nixpkgs.
 ci:
-	shellcheck *.sh
+	@if command -v shellcheck >/dev/null; then shellcheck *.sh; else nix shell nixpkgs#shellcheck -c shellcheck *.sh; fi
 	./sources.test.sh
